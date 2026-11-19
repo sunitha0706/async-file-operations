@@ -1,3 +1,4 @@
+
 import http from "http";
 import { spawn } from "child_process";
 
@@ -6,8 +7,9 @@ const server = http.createServer((req, res) => {
     res.end("Asynchronous File Operations - Node.js Lab");
 });
 
-server.listen(process.env.PORT || 3000, "0.0.0.0");
-
-spawn("node", ["asyncFilesOs.js"], {
-    stdio: "inherit"
+server.listen(process.env.PORT || 3000, "0.0.0.0", () => {
+    console.log("Server is running");
+    spawn("node", ["asyncFileOs.js"], {
+        stdio: "inherit"
+    });
 });
